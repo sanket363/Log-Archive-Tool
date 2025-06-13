@@ -1,0 +1,3 @@
+[20250613_133335] Archived logs to archives\logs_archive_20250613_133335.tar.gz
+[20250613_133901] Archived to-be-archive-files/testing.txt to archives\logs_archive_20250613_133901.tar.gz
+[20250613_133907] Archived to-be-archive-files to archives\logs_archive_20250613_133907.tar.gz

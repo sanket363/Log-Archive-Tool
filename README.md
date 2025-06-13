@@ -1,33 +1,41 @@
 # Log-Archive-Tool
 
-A simple CLI tool to compress and archive log files on a schedule, helping keep your system clean and organized.
+A simple CLI tool to compress and archive log files or directories on demand, helping keep your system clean and organized.
 
 ## Overview
 
-`Log-Archive-Tool` is a command-line utility designed to help you manage and maintain log files on your system. It compresses log files from a specified directory (such as `/var/log` on Unix-based systems) into a `.tar.gz` archive and stores them in a new directory. This helps free up space while keeping logs available for future reference in a compressed format.
+`Log-Archive-Tool` is a command-line utility designed to help you manage and maintain log files on your system. It compresses a specified log file or all log files from a specified directory (such as `/var/log` on Unix-based systems) into a `.tar.gz` archive and stores them in a new directory. This helps free up space while keeping logs available for future reference in a compressed format.
 
 ## Features
 
-- Accepts the log directory as a command-line argument
-- Compresses all logs in the specified directory into a `.tar.gz` archive
-- Stores the archive in a new directory
-- Logs the date and time of each archive operation
+- Accepts a log file **or** a log directory as a command-line argument
+- Compresses the specified file or all files in the specified directory into a `.tar.gz` archive
+- Stores the archive in a new `archives` directory
+- Logs the date and time of each archive operation to `archive_log.txt`
 
 ## Usage
 
 ```sh
-log-archive <log-directory>
+python log-archive.py <path>
 ```
 
-- `<log-directory>`: The path to the directory containing the log files you want to archive (e.g., `/var/log`).
+- `<path>`: The path to the log file **or** directory you want to archive (e.g., `/var/log/syslog` or `/var/log`).
 
-### Example
+### Examples
+
+Archive a single log file:
 
 ```sh
-log-archive /var/log
+python log-archive.py /var/log/syslog
 ```
 
-This will compress the logs in `/var/log` and store the archive in a new directory, e.g., `logs_archive_20240816_100648.tar.gz`.
+Archive all files in a directory:
+
+```sh
+python log-archive.py /var/log
+```
+
+This will compress the specified file or all files in the directory and store the archive in the `archives` directory, e.g., `logs_archive_20240816_100648.tar.gz`.
 
 ## Archive Naming Convention
 
@@ -39,12 +47,12 @@ logs_archive_YYYYMMDD_HHMMSS.tar.gz
 
 ## Logging
 
-Each archive operation logs the date and time to a log file for tracking purposes.
+Each archive operation logs the date, time, and the archived path to `archive_log.txt` for tracking purposes.
 
 ## Requirements
 
-- Python 3.x (or your chosen language)
-- Access to the log directory you wish to archive
+- Python 3.x
+- Access to the file or directory you wish to archive
 
 ## Advanced Features (Optional)
 
